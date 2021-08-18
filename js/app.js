@@ -11,7 +11,8 @@ function generatePin() {
     const pin = getPin();
     document.getElementById("display-pin").value = pin;
     document.getElementById("typed-numbers").value = "";
-
+    document.getElementById("notify-success").style.display = "none";
+    document.getElementById("notify-fail").style.display = "none";
 };
 document.getElementById("key-pad").addEventListener("click", function (event) {
     const number = event.target.innerText;
