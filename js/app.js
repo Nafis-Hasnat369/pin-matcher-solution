@@ -13,6 +13,7 @@ function generatePin() {
     document.getElementById("typed-numbers").value = "";
     document.getElementById("notify-success").style.display = "none";
     document.getElementById("notify-fail").style.display = "none";
+    document.getElementById("notify-empty").style.display = "none";
 };
 document.getElementById("key-pad").addEventListener("click", function (event) {
     const number = event.target.innerText;
@@ -20,7 +21,10 @@ document.getElementById("key-pad").addEventListener("click", function (event) {
     if (isNaN(number)) {
         if (number == "C") {
             caclInput.value = "";
-        };
+        }
+        else if (number == "<") {
+            caclInput.value = caclInput.value.slice(0, caclInput.value.length - 1);
+        }
     }
     else {
         const previousNumber = caclInput.value;
@@ -34,7 +38,11 @@ function verifyPin() {
     const typedNumbers = document.getElementById("typed-numbers").value;
     const successNotification = document.getElementById("notify-success");
     const failNotification = document.getElementById("notify-fail");
-    if (pin == typedNumbers) {
+    const emptyNatification = document.getElementById("notify-empty");
+    if (pin == "") {
+        emptyNatification.style.display = "block";
+    }
+    else if (pin == typedNumbers) {
         successNotification.style.display = "block";
         failNotification.style.display = "none";
     }
