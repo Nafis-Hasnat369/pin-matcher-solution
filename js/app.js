@@ -11,6 +11,7 @@ function generatePin() {
     const pin = getPin();
     document.getElementById("display-pin").value = pin;
     document.getElementById("typed-numbers").value = "";
+    // displayed notifications
     document.getElementById("notify-success").style.display = "none";
     document.getElementById("notify-fail").style.display = "none";
     document.getElementById("notify-empty").style.display = "none";
@@ -44,10 +45,8 @@ function verifyPin() {
     }
     else if (pin == typedNumbers) {
         successNotification.style.display = "block";
-        failNotification.style.display = "none";
     }
     else {
-        successNotification.style.display = "none";
         failNotification.style.display = "block";
     };
 };
